@@ -1,48 +1,46 @@
 {
-  "name": "three-orbitcontrols-ts",
-  "version": "0.1.2",
-  "description": "ThreeJS OrbitControls as a standalone and typescript compatible npm module",
+  "name": "@three-ts/orbit-controls",
+  "version": "1.4.2",
+  "description": "Three.js OrbitControls typescript compatible package",
   "main": "dist",
   "scripts": {
-    "preversion": "npm test && ./node_modules/typescript/bin/tsc -p tsconfig.json",
-    "test": "mocha --opts mocha.opts"
+    "preversion": "npm test && tsc -p tsconfig.json",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolaspanel/three-orbitcontrols-ts.git"
+    "url": "git+https://github.com/IPRIT/three-orbitcontrols-ts.git"
   },
-  "author": "",
+  "author": "Alex Belov",
   "license": "MIT",
   "keywords": [
     "orbit",
     "controls",
+    "camera",
+    "typescript",
+    "controller",
     "threejs",
     "three",
-    "js",
-    "orbiter",
-    "camera",
-    "controller"
+    "js"
   ],
   "bugs": {
     "url": "https://github.com/nicolaspanel/three-orbitcontrols-ts/issues"
   },
   "homepage": "https://github.com/nicolaspanel/three-orbitcontrols-ts#readme",
-  "peerDependencies": {
-    "three": "^0.94.0"
+  "dependencies": {
+    "three": "^0.126.0"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.35",
-    "@types/jsdom": "^2.0.29",
-    "@types/mocha": "^2.2.35",
-    "@types/three": "^0.92.13",
-    "chai": "^3.5.0",
-    "jsdom": "^9.9.1",
-    "mocha": "^3.2.0",
-    "ts-node": "^2.0.0",
-    "typescript": "^2.1.4"
+    "@types/chai": "^4.2.15",
+    "@types/core-js": "^2.5.4",
+    "@types/jsdom": "^16.2.6",
+    "@types/mocha": "^8.2.1",
+    "@types/three": "^0.125.3",
+    "chai": "^4.3.0",
+    "jsdom": "^16.4.0",
+    "mocha": "^8.3.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2"
   },
-  "typings": "dist/index.d.ts",
-  "dependencies": {
-    "three": "^0.94.0"
-  }
+  "typings": "dist/index.d.ts"
 }

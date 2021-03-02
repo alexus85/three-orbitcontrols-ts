@@ -1,16 +1,22 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var THREE = require("three");
+exports.OrbitControls = void 0;
+var Three = require("three");
 var STATE = {
     NONE: -1,
     ROTATE: 0,
@@ -38,7 +44,7 @@ var EPS = 0.000001;
 *    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
 *    Pan - right mouse, or arrow keys / touch: three finger swipe
 */
-var OrbitControls = (function (_super) {
+var OrbitControls = /** @class */ (function (_super) {
     __extends(OrbitControls, _super);
     function OrbitControls(object, domElement, domWindow) {
         var _this = _super.call(this) || this;
@@ -48,7 +54,7 @@ var OrbitControls = (function (_super) {
         // Set to false to disable this control
         _this.enabled = true;
         // "target" sets the location of focus, where the object orbits around
-        _this.target = new THREE.Vector3();
+        _this.target = new Three.Vector3();
         // How far you can dolly in and out ( PerspectiveCamera only )
         _this.minDistance = 0;
         _this.maxDistance = Infinity;
@@ -86,37 +92,37 @@ var OrbitControls = (function (_super) {
         // The four arrow keys
         _this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40 };
         // Mouse buttons
-        _this.mouseButtons = { ORBIT: THREE.MOUSE.LEFT, ZOOM: THREE.MOUSE.MIDDLE, PAN: THREE.MOUSE.RIGHT };
+        _this.mouseButtons = { ORBIT: Three.MOUSE.LEFT, ZOOM: Three.MOUSE.MIDDLE, PAN: Three.MOUSE.RIGHT };
         // for reset
         _this.target0 = _this.target.clone();
         _this.position0 = _this.object.position.clone();
         _this.zoom0 = _this.object.zoom;
         // for update speedup
-        _this.updateOffset = new THREE.Vector3();
+        _this.updateOffset = new Three.Vector3();
         // so camera.up is the orbit axis
-        _this.updateQuat = new THREE.Quaternion().setFromUnitVectors(object.up, new THREE.Vector3(0, 1, 0));
-        _this.updateQuatInverse = _this.updateQuat.clone().inverse();
-        _this.updateLastPosition = new THREE.Vector3();
-        _this.updateLastQuaternion = new THREE.Quaternion();
+        _this.updateQuat = new Three.Quaternion().setFromUnitVectors(object.up, new Three.Vector3(0, 1, 0));
+        _this.updateQuatInverse = _this.updateQuat.clone().invert();
+        _this.updateLastPosition = new Three.Vector3();
+        _this.updateLastQuaternion = new Three.Quaternion();
         _this.state = STATE.NONE;
         _this.scale = 1;
         // current position in spherical coordinates
-        _this.spherical = new THREE.Spherical();
-        _this.sphericalDelta = new THREE.Spherical();
-        _this.panOffset = new THREE.Vector3();
+        _this.spherical = new Three.Spherical();
+        _this.sphericalDelta = new Three.Spherical();
+        _this.panOffset = new Three.Vector3();
         _this.zoomChanged = false;
-        _this.rotateStart = new THREE.Vector2();
-        _this.rotateEnd = new THREE.Vector2();
-        _this.rotateDelta = new THREE.Vector2();
-        _this.panStart = new THREE.Vector2();
-        _this.panEnd = new THREE.Vector2();
-        _this.panDelta = new THREE.Vector2();
-        _this.dollyStart = new THREE.Vector2();
-        _this.dollyEnd = new THREE.Vector2();
-        _this.dollyDelta = new THREE.Vector2();
-        _this.panLeftV = new THREE.Vector3();
-        _this.panUpV = new THREE.Vector3();
-        _this.panInternalOffset = new THREE.Vector3();
+        _this.rotateStart = new Three.Vector2();
+        _this.rotateEnd = new Three.Vector2();
+        _this.rotateDelta = new Three.Vector2();
+        _this.panStart = new Three.Vector2();
+        _this.panEnd = new Three.Vector2();
+        _this.panDelta = new Three.Vector2();
+        _this.dollyStart = new Three.Vector2();
+        _this.dollyEnd = new Three.Vector2();
+        _this.dollyDelta = new Three.Vector2();
+        _this.panLeftV = new Three.Vector3();
+        _this.panUpV = new Three.Vector3();
+        _this.panInternalOffset = new Three.Vector3();
         // event handlers - FSM: listen for events and reset state
         _this.onMouseDown = function (event) {
             if (_this.enabled === false)
@@ -531,27 +537,27 @@ var OrbitControls = (function (_super) {
     Object.defineProperty(OrbitControls.prototype, "center", {
         // backward compatibility
         get: function () {
-            console.warn('THREE.OrbitControls: .center has been renamed to .target');
+            console.warn('Three.OrbitControls: .center has been renamed to .target');
             return this.target;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(OrbitControls.prototype, "noZoom", {
         get: function () {
-            console.warn('THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
+            console.warn('Three.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
             return !this.enableZoom;
         },
         set: function (value) {
-            console.warn('THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
+            console.warn('Three.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
             this.enableZoom = !value;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     /**
      * TS typeguard. Checks whether the provided camera is PerspectiveCamera.
-     * If the check passes (returns true) the passed camera will have the type THREE.PerspectiveCamera in the if branch where the check was performed.
+     * If the check passes (returns true) the passed camera will have the type Three.PerspectiveCamera in the if branch where the check was performed.
      * @param camera Object to be checked.
      */
     OrbitControls.prototype._checkPerspectiveCamera = function (camera) {
@@ -559,12 +565,12 @@ var OrbitControls = (function (_super) {
     };
     /**
      * TS typeguard. Checks whether the provided camera is OrthographicCamera.
-     * If the check passes (returns true) the passed camera will have the type THREE.OrthographicCamera in the if branch where the check was performed.
+     * If the check passes (returns true) the passed camera will have the type Three.OrthographicCamera in the if branch where the check was performed.
      * @param camera Object to be checked.
      */
     OrbitControls.prototype._checkOrthographicCamera = function (camera) {
         return camera.isOrthographicCamera;
     };
     return OrbitControls;
-}(THREE.EventDispatcher));
+}(Three.EventDispatcher));
 exports.OrbitControls = OrbitControls;
