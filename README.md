@@ -2,13 +2,13 @@ ThreeJS OrbitControls as a standalone and typescript compatible npm module.
 
 # Installation
 ```shell
-npm install --save three-orbitcontrols-ts
+npm install --save @three-ts/orbit-controls
 ```
 
 # Usage
 ```js
 import * as THREE from 'three';
-import { OrbitControls } from 'three-orbitcontrols-ts';
+import { OrbitControls } from '@three-ts/orbit-controls';
 
 const camera = new THREE.SomeCamera(...);
 const controls = new OrbitControls(camera, renderer.domElement);
