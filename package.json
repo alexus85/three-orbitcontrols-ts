@@ -1,6 +1,6 @@
 {
   "name": "@three-ts/orbit-controls",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Three.js OrbitControls typescript compatible package",
   "main": "dist",
   "scripts": {
@@ -24,9 +24,9 @@
     "js"
   ],
   "bugs": {
-    "url": "https://github.com/nicolaspanel/three-orbitcontrols-ts/issues"
+    "url": "https://github.com/IPRIT/three-orbitcontrols-ts/issues"
   },
-  "homepage": "https://github.com/nicolaspanel/three-orbitcontrols-ts#readme",
+  "homepage": "https://github.com/IPRIT/three-orbitcontrols-ts#readme",
   "dependencies": {
     "three": "^0.126.0"
   },

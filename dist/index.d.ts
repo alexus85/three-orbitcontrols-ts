@@ -6,6 +6,7 @@ import * as Three from 'three';
 * @author WestLangley / http://github.com/WestLangley
 * @author erich666 / http://erichaines.com
 * @author nicolaspanel / http://github.com/nicolaspanel
+* @author IPRIT / http://github.com/IPRIT
 *
 * This set of controls performs orbiting, dollying (zooming), and panning.
 * Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
