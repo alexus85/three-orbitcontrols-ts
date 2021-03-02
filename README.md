@@ -1,4 +1,4 @@
-ThreeJS OrbitControls as a standalone and typescript compatible npm module.
+Three.js OrbitControls Typescript compatible package.
 
 # Installation
 ```shell

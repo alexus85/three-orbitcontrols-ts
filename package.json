@@ -1,6 +1,6 @@
 {
   "name": "@three-ts/orbit-controls",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Three.js OrbitControls typescript compatible package",
   "main": "dist",
   "scripts": {
